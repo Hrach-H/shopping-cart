@@ -6,7 +6,6 @@ import { store } from '../index';
 
 class Product extends Component {
     addToCart() {
-        console.log(this.props.name);
         store.dispatch(addToCart({
             name: this.props.name,
             id: this.props.id
@@ -16,13 +15,13 @@ class Product extends Component {
     render() {
         return (
             <ul className="product">
-                <li><img src={this.props.url} alt={this.props.name}/></li>
-                <li><strong>{this.props.name}</strong></li>
-                <li>Price: {this.props.price}</li>
-                <li>Available quantity: {this.props.availableQuantity}</li>
-                <li>Description: {this.props.description}</li>
+                <li> <img src={this.props.url} alt={this.props.name} /> </li>
+                <li> <strong> {this.props.name} </strong> </li>
+                <li> Price: {this.props.price} </li>
+                <li> Available quantity: {this.props.availableQuantity} </li>
+                <li> Description: {this.props.description} </li>
                 <li>
-                    <button onClick={this.addToCart.bind(this)}>Add to cart</button>
+                    <button onClick={this.addToCart.bind(this)}> Add to cart </button>
                 </li>
             </ul>
         );

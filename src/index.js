@@ -22,9 +22,9 @@ class App extends Component {
                     <ul>
                         <li>
                             <div className="nav">
-                                <Link to='/'>Homepage</Link>
-                                <Link to='/firstPage'>First Page</Link>
-                                <Link to='/secondPage'>Second Page</Link>
+                                <Link to='/'> Homepage </Link>
+                                <Link to='/firstPage'> First Page </Link>
+                                <Link to='/secondPage'> Second Page </Link>
                             </div>
                         </li>
                         <li>

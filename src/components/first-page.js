@@ -20,12 +20,7 @@ class firstPage extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        products: state.products
-    }
-}
 
-firstPage = connect(mapStateToProps)(firstPage);
+firstPage = connect( (state) => ( { products: state.products } ) )(firstPage);
 
 export default firstPage;

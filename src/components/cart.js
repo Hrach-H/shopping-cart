@@ -18,8 +18,6 @@ class Cart extends Component {
     }
 }
 
-Cart = connect((state) => ({
-    cart: state.cart
-}))(Cart);
+Cart = connect( (state) => ( {cart: state.cart} ) )(Cart);
 
 export default Cart;

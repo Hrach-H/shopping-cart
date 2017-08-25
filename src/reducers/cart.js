@@ -25,7 +25,7 @@ const initialState = [
 export default function(state=initialState, action) {
     switch (action.type) {
         case 'ADD_TO_CART':
-            return state.map((product) => {
+            return state.map( (product) => {
                 if (product.id === action.payload.id) {
                     if (product.availableQuantity > product.quantity) {
                         product.quantity++
