@@ -8,6 +8,7 @@ import './styles/index.css'
 
 import { allReducers } from "./reducers/index";
 
+import Homepage from './components/homepage'
 import FirstPage from './components/first-page';
 import SecondPage from './components/second-page';
 import Cart from './components/cart'
@@ -31,6 +32,7 @@ class App extends Component {
                         </li>
                     </ul>
                     <hr />
+                    <Route exact path="/" component={Homepage} />
                     <Route path="/firstPage" component={FirstPage} />
                     <Route path="/secondPage" component={SecondPage} />
                 </div>
