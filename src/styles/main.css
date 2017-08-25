@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.nav > *{
+    margin: 10px 10px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 0.3em;
+    border-radius: 1em;
+    vertical-align: center;
+    background-color: purple;
+}
+
+.nav > *:active {
+    background-color: white;
+    color: purple;
+}
+
+.routes {
+    margin: 10px 10px;
+}

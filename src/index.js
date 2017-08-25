@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import './styles/index.css'
+import './styles/main.css'
 
 import { allReducers } from "./reducers/index";
 
@@ -23,8 +23,8 @@ class App extends Component {
                     <ul>
                         <li>
                             <div className="nav">
-                                <Link to='/'> Homepage </Link>
-                                <Link to='/firstPage'> Check out our products </Link>
+                                <Link to='/'> HOMEPAGE </Link>
+                                <Link to='/firstPage'> OUR PRODUCTS </Link>
                             </div>
                         </li>
                         <li>
@@ -32,9 +32,11 @@ class App extends Component {
                         </li>
                     </ul>
                     <hr />
-                    <Route exact path="/" component={Homepage} />
-                    <Route path="/firstPage" component={FirstPage} />
-                    <Route path="/secondPage" component={SecondPage} />
+                    <div className="routes">
+                        <Route exact path="/" component={Homepage} />
+                        <Route path="/firstPage" component={FirstPage} />
+                        <Route path="/secondPage" component={SecondPage} />
+                    </div>
                 </div>
         );
     }
