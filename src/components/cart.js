@@ -6,7 +6,9 @@ class Cart extends Component {
     render() {
         return (
             <div className="cart">
-                {this.props.cart.length}
+                {this.props.cart.reduce((acc, curr) => {
+                    return acc += curr.quantity
+                }, 0)}
             </div>
         );
     }
