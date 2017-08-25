@@ -16,7 +16,7 @@ class Product extends Component {
     render() {
         return (
             <ul className="product">
-                <li><img src={this.props.url}/></li>
+                <li><img src={this.props.url} alt={this.props.name}/></li>
                 <li><strong>{this.props.name}</strong></li>
                 <li>Price: {this.props.price}</li>
                 <li>Available quantity: {this.props.availableQuantity}</li>

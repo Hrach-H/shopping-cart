@@ -31,7 +31,9 @@ export default function(state=initialState, action) {
         case 'ADD_TO_CART':
             return state.map( (product) => {
                 if (product.name === action.payload.name) {
-                    product.availableQuantity--;
+                     if (product.availableQuantity > 0) {
+                        product.availableQuantity--;
+                    }
                 }
                 return product;
             } );
