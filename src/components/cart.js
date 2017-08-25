@@ -12,7 +12,7 @@ class Cart extends Component {
     render() {
         return (
             <div className="cart">
-                {this.reduceCart(this.props.cart)}
+                <p> Items in your cart: {this.reduceCart(this.props.cart)} </p>
             </div>
         );
     }
