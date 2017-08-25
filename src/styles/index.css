@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cart {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.nav {
+    margin-right: 10px;
+    display: inline;
+}
+
+.product img {
+    max-height: 100px;
+    max-width: 70px;
+}
+
+.product {
+    margin: 20px 10px;
+}
+
