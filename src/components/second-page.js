@@ -7,7 +7,9 @@ class secondPage extends Component {
             return acc += curr.quantity
         }, 0) > 0 ) {
             return this.props.cart.map( (item) => {
-                if (item.quantity > 0) return <li key={item.id}> You've ordered {item.quantity} {item.name} - ${item.quantity * item.price} </li>;
+                if (item.quantity > 0) {
+                    return <li key={item.id}> You've ordered {item.quantity} {item.quantity > 0 ? item.name.toLowerCase()+'s' : item.name.toLowerCase()} - ${item.quantity * item.price} </li>;
+                }
             } );
         } else {
             return <li> You haven't ordered yet :(</li>
