@@ -19,14 +19,6 @@ const initialState = [
     }
 ];
 
-function reduce(state) {
-    return state.map((product) => {
-        return product;
-    }).reduce((acc, curr) => {
-        return acc += curr.quantity
-    }, 0);
-}
-
 export default function(state=initialState, action) {
     switch (action.type) {
         case 'ADD_TO_CART':

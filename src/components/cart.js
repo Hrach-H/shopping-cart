@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 
 
 class Cart extends Component {
+    reduceCart(arr) {
+        return arr.reduce((acc, curr) => {
+            return acc += curr.quantity
+        }, 0)
+    }
+
     render() {
         return (
             <div className="cart">
-                {this.props.cart.reduce((acc, curr) => {
-                    return acc += curr.quantity
-                }, 0)}
+                {this.reduceCart(this.props.cart)}
             </div>
         );
     }
