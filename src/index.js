@@ -19,10 +19,14 @@ class App extends Component {
         return (
                 <div>
                     <h1> Testing Router </h1>
-                    <ul className="nav">
-                        <li><Link to='/'>Homepage</Link></li>
-                        <li><Link to='/firstPage'>First Page</Link></li>
-                        <li><Link to='/secondPage'>Second Page</Link></li>
+                    <ul>
+                        <li>
+                            <div className="nav">
+                                <Link to='/'>Homepage</Link>
+                                <Link to='/firstPage'>First Page</Link>
+                                <Link to='/secondPage'>Second Page</Link>
+                            </div>
+                        </li>
                         <li>
                             <Cart />
                         </li>
