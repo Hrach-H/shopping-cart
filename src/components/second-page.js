@@ -7,11 +7,18 @@ class secondPage extends Component {
             return acc += curr.quantity
         }, 0) > 0 ) {
             return this.props.cart.map( (item) => {
-                return <li key={item.id}> You've ordered {item.quantity} {item.name} </li>
+                if (item.quantity > 0) return <li key={item.id}> You've ordered {item.quantity} {item.name} - ${item.quantity * item.price} </li>;
             } );
         } else {
             return <li> You haven't ordered yet :(</li>
         }
+    }
+
+    totalPrice() {
+        const totalPrice = this.props.cart.reduce( (acc, curr) => {
+            return acc += curr.price * curr.quantity;
+        }, 0 );
+        if (totalPrice > 0) return <p><strong>Total: ${totalPrice}</strong></p>
     }
 
     render() {
@@ -21,6 +28,7 @@ class secondPage extends Component {
                 <ul>
                     {this.renderContents()}
                 </ul>
+                {this.totalPrice()}
             </div>
         );
     }

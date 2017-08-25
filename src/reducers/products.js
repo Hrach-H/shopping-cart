@@ -24,7 +24,6 @@ const initialState = [
         url: 'https://images-na.ssl-images-amazon.com/images/I/819UCJYFG2L._SY450_.jpg'
     }
 ];
-let id = initialState.length+1;
 
 export default function(state=initialState, action) {
     switch (action.type) {
