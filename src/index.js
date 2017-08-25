@@ -18,13 +18,12 @@ class App extends Component {
     render() {
         return (
                 <div>
-                    <h1> Testing Router </h1>
+                    <h1> Shopping cart test app </h1>
                     <ul>
                         <li>
                             <div className="nav">
                                 <Link to='/'> Homepage </Link>
-                                <Link to='/firstPage'> First Page </Link>
-                                <Link to='/secondPage'> Second Page </Link>
+                                <Link to='/firstPage'> Check out our products </Link>
                             </div>
                         </li>
                         <li>

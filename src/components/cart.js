@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class Cart extends Component {
@@ -12,7 +13,7 @@ class Cart extends Component {
     render() {
         return (
             <div className="cart">
-                <p> Items in your cart: {this.reduceCart(this.props.cart)} </p>
+                <p> Items in your <Link to="/secondPage">cart</Link>: {this.reduceCart(this.props.cart)} </p>
             </div>
         );
     }
