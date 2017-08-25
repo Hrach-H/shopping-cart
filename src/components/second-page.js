@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class secondPage extends Component {
     renderContents() {
         if (this.props.cart.reduce((acc, curr) => {
-            return acc += curr.quantity
+            return acc += curr.quantity;
         }, 0) > 0 ) {
             return this.props.cart.map( (item) => {
                 if (item.quantity > 0) {

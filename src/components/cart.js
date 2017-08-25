@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Cart extends Component {
     reduceCart(arr) {
         return arr.reduce((acc, curr) => {
-            return acc += curr.quantity
+            return acc += curr.quantity;
         }, 0)
     }
 

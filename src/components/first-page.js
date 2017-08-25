@@ -7,7 +7,7 @@ import Product from './product'
 class firstPage extends Component {
     renderItems() {
         return this.props.products.map( (product) => {
-            return <Product key={product.id} {...product}/>
+            return <Product key={product.id} {...product}/>;
         } )
     }
 
