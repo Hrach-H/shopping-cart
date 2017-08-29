@@ -3,26 +3,17 @@ import '../styles/index.css';
 
 import { addToCart } from "../actions";
 import { store } from '../index';
+import { connect } from 'react-redux';
 
 class Product extends Component {
-    constructor() {
-        super();
-        this.state = {
-            quantity: 1
-        }
-    }
 
     addToCart() {
-        if (this.state.quantity <= this.props.availableQuantity) {
-            this.setState((prevState) => ({
-                quantity: ++prevState.quantity
-            }));
-            store.dispatch(addToCart({
-                id: this.props.id,
-                quantity: this.state.quantity
-            }));
-        }
-    };
+        store.dispatch(addToCart({
+            id: this.props.id,
+            quantity: this.props.cart[this.props.id] ?
+                (this.props.cart[this.props.id] < this.props.availableQuantity ? this.props.cart[this.props.id]+1 : this.props.cart[this.props.id]) : 1
+        }));
+    }
 
     render() {
         return (
@@ -30,15 +21,14 @@ class Product extends Component {
                 <li> <img src={this.props.url} alt={this.props.name} /> </li>
                 <li> <strong> {this.props.name} </strong> </li>
                 <li> Price: {this.props.price} </li>
-                <li> Available quantity: {this.props.availableQuantity} </li>
+                <li> Available quantity: {this.props.availableQuantity - (this.props.cart[this.props.id] || 0)} </li>
                 <li> Description: {this.props.description} </li>
                 <li>
                     <button onClick={this.addToCart.bind(this)}> Add to cart </button>
                 </li>
-            </ul>
-        );
-    }
+            </ul>);}
 }
 
+Product = connect( state => ({cart: state.cartReducer}) )(Product);
 
 export default Product
