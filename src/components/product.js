@@ -5,11 +5,23 @@ import { addToCart } from "../actions";
 import { store } from '../index';
 
 class Product extends Component {
+    constructor() {
+        super();
+        this.state = {
+            quantity: 1
+        }
+    }
+
     addToCart() {
-        store.dispatch(addToCart({
-            name: this.props.name,
-            id: this.props.id
-        }));
+        if (this.state.quantity <= this.props.availableQuantity) {
+            this.setState((prevState) => ({
+                quantity: ++prevState.quantity
+            }));
+            store.dispatch(addToCart({
+                id: this.props.id,
+                quantity: this.state.quantity
+            }));
+        }
     };
 
     render() {

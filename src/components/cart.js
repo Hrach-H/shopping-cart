@@ -4,21 +4,23 @@ import { Link } from 'react-router-dom';
 
 
 class Cart extends Component {
-    reduceCart(arr) {
-        return arr.reduce((acc, curr) => {
-            return acc += curr.quantity;
-        }, 0)
+    reduceCart(orders) {
+        let items = 0;
+        for (let order in orders) {
+            items += orders[order];
+        }
+        return items;
     }
 
     render() {
         return (
             <div className="cart">
-                <p> Items in your <Link to="/secondPage">cart</Link>: {this.reduceCart(this.props.cart)} </p>
+                <p> Items in your <Link to="/secondPage">cart</Link>: {this.reduceCart(this.props.cart)}</p>
             </div>
         );
     }
 }
 
-Cart = connect( (state) => ( {cart: state.cart} ) )(Cart);
+Cart = connect( (state) => ( {cart: state.cartReducer} ) )(Cart);
 
 export default Cart;
