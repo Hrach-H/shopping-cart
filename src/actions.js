@@ -4,3 +4,12 @@ export const addToCart = (product) => {
         payload: product
     }
 };
+
+export const fetchRequest = () => ({
+    type: "FETCH"
+});
+
+export const fetchRequestSuccess = (products) => ({
+    type: 'FETCH_SUCCESS',
+    payload: products
+});

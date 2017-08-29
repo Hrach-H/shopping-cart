@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import './styles/main.css'
 
@@ -13,7 +14,7 @@ import FirstPage from './components/first-page';
 import SecondPage from './components/second-page';
 import Cart from './components/cart'
 
-export const store = createStore(allReducers);
+export const store = createStore(allReducers, applyMiddleware(thunk));
 
 class App extends Component {
     render() {
