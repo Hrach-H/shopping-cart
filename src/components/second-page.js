@@ -20,7 +20,7 @@ class secondPage extends Component {
             newObj[id].availableQuantity = newObj[id].availableQuantity - newObj[id].quantity;
             delete newObj[id].quantity;
         }
-        console.log(newObj);
+
     }
 
     render() {

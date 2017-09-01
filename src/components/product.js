@@ -14,6 +14,7 @@ class Product extends Component {
             price: this.props.price,
             description: this.props.description,
             availableQuantity: this.props.availableQuantity,
+            url: this.props.url,
             quantity: this.props.cart[this.props.id] ?
                 (this.props.cart[this.props.id].quantity < this.props.availableQuantity ? this.props.cart[this.props.id].quantity+1 : this.props.cart[this.props.id].quantity) : 1
         }));
