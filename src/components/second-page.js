@@ -9,6 +9,11 @@ class secondPage extends Component {
        } )
     }
 
+    renderTotalPrice() {
+        return Object.keys(this.props.cart).length &&
+            Object.keys(this.props.cart).map( (order) => this.props.cart[order].quantity * this.props.cart[order].price).reduce((acc, curr) => acc += curr);
+    }
+
     render() {
         return (
             <div>
@@ -16,7 +21,7 @@ class secondPage extends Component {
                 <ul>
                     {(Object.keys(this.props.cart).length && this.renderCartContents()) || "You haven't ordered yet"}
                 </ul>
-
+                <p><strong>Price total:</strong> ${this.renderTotalPrice()}</p>
             </div>
         );
     }
