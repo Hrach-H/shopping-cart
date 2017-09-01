@@ -7,7 +7,9 @@ class Cart extends Component {
     reduceCart(orders) {
         let items = 0;
         for (let order in orders) {
-            items += orders[order];
+            for (let key in orders[order]) {
+                (key === 'quantity') && (items += orders[order][key]);
+            }
         }
         return items;
     }
