@@ -9,7 +9,7 @@ import Product from './product'
 class firstPage extends Component {
     renderItems() {
         return this.props.products.map( (product) => {
-            return <Product key={product.id} {...product}/>;
+            return <Product key={product._id} {...product}/>;
         } )
     }
 
@@ -36,7 +36,7 @@ function mapStateToProps(state) {
 function fetchProducts() {
     return (dispatch) => {
         dispatch(fetchRequest());
-        return fetch('https://59a11ee1c89deb0011c337d5.mockapi.io/products')
+        return fetch('http://localhost:4000/api/products')
             .then(response => response.json())
             .then(result => dispatch(fetchRequestSuccess(result)));
     }
