@@ -20,7 +20,13 @@ class secondPage extends Component {
             newObj[id].availableQuantity = newObj[id].availableQuantity - newObj[id].quantity;
             delete newObj[id].quantity;
         }
-        fetch('http://localhost:4000/api/products', {method: 'PATCH', body: JSON.stringify(newObj)})
+        fetch('http://localhost:4000/api/products', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'PATCH', body: JSON.stringify(newObj)})
+            .then(response => console.log(response))
             .catch(error => console.log(error));
     }
 
