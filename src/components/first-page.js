@@ -17,8 +17,11 @@ class firstPage extends Component {
         this.props.fetchProducts();
     }
 
+    componentWillReceiveProps() {
+        this.props.fetchProducts()
+    }
+
     render() {
-        console.log(this.props);
         return (
             <div>
                 {this.props.products && this.renderItems()}

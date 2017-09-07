@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { store } from "../index";
+import {resetCart} from "../actions";
+
 class secondPage extends Component {
 
     renderCartContents() {
@@ -26,7 +29,10 @@ class secondPage extends Component {
                 'Content-Type': 'application/json'
             },
             method: 'PATCH', body: JSON.stringify(newObj)})
-            .then(response => console.log(response))
+            .then(response => {
+                console.log(response);
+                store.dispatch(resetCart());
+            })
             .catch(error => console.log(error));
     }
 

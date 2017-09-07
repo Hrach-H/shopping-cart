@@ -13,3 +13,7 @@ export const fetchRequestSuccess = (products) => ({
     type: 'FETCH_SUCCESS',
     payload: products
 });
+
+export const resetCart = () => ({
+    type: 'RESET_CART'
+});
