@@ -11,6 +11,7 @@ class Product extends Component {
         store.dispatch(addToCart({
             id: this.props._id,
             price: this.props.price,
+            name: this.props.name,
             availableQuantity: this.props.availableQuantity,
             quantity: this.props.cart[this.props._id] ?
                 (this.props.cart[this.props._id].quantity < this.props.availableQuantity ? this.props.cart[this.props._id].quantity+1 : this.props.cart[this.props._id].quantity) : 1
