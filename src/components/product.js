@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 class Product extends Component {
 
-    addToCart() {
+    addToCart = () =>  {
         store.dispatch(addToCart({
             id: this.props._id,
             price: this.props.price,
@@ -16,7 +16,7 @@ class Product extends Component {
             quantity: this.props.cart[this.props._id] ?
                 (this.props.cart[this.props._id].quantity < this.props.availableQuantity ? this.props.cart[this.props._id].quantity+1 : this.props.cart[this.props._id].quantity) : 1
         }));
-    }
+    };
 
     render() {
         return (
@@ -27,7 +27,7 @@ class Product extends Component {
                 <li> Available quantity: {this.props.availableQuantity - ((this.props.cart[this.props._id] && this.props.cart[this.props._id].quantity) || 0)} </li>
                 <li> Description: {this.props.description} </li>
                 <li>
-                    <button onClick={this.addToCart.bind(this)}> Add to cart </button>
+                    <button onClick={this.addToCart}> Add to cart </button>
                 </li>
             </ul>);}
 }

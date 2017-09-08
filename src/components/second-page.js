@@ -17,7 +17,7 @@ class secondPage extends Component {
             Object.keys(this.props.cart).map( (order) => this.props.cart[order].quantity * this.props.cart[order].price).reduce((acc, curr) => acc += curr);
     }
 
-    handleOrder() {
+    handleOrder = () => {
         let newObj = Object.assign({}, this.props.cart);
         for (let id in newObj) {
             newObj[id].availableQuantity = newObj[id].availableQuantity - newObj[id].quantity;
@@ -34,7 +34,7 @@ class secondPage extends Component {
                 store.dispatch(resetCart());
             })
             .catch(error => console.log(error));
-    }
+    };
 
     render() {
         return (
@@ -44,7 +44,7 @@ class secondPage extends Component {
                     {(Object.keys(this.props.cart).length && this.renderCartContents()) || "You haven't ordered yet"}
                 </ul>
                 <p><strong>Price total:</strong> ${this.renderTotalPrice()}</p>
-                <button onClick={this.handleOrder.bind(this)}>Order now!</button>
+                <button onClick={this.handleOrder}>Order now!</button>
             </div>
         );
     }
