@@ -53,16 +53,16 @@ class Registration extends Component {
                         <Field name='firstName' component='input' type='text' />
                     </li>
                     <li>
-                        <label htmlFor='secondName'>Second Name</label>
-                        <Field name='secondName' component='input' type='text' />
+                        <label htmlFor='lastName'>Second Name</label>
+                        <Field name='lastName' component='input' type='text' />
                     </li>
                     <li>
                         <label htmlFor='email'>E-mail address</label>
                         <Field name='email' component='input' type='text' />
                     </li>
                     <li>
-                        <label htmlFor='pass'>Password</label>
-                        <Field name='pass' component='input' type='password' />
+                        <label htmlFor='password'>Password</label>
+                        <Field name='password' component='input' type='password' />
                     </li>
                     <li>
                         <label htmlFor='passConfirm'>Password Confirmation</label>
