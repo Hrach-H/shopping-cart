@@ -8,6 +8,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "redux-form": "^7.0.4",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
@@ -19,5 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Hrach-H/shopping-cart.git",
+  "author": "hrachya.hovsepyan <hrachya.hovsepyan@betconstruct.com>",
+  "license": "MIT"
 }
