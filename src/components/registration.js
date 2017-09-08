@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
+import { Field, reduxForm, reset } from 'redux-form';
+import { store } from "../index";
 import '../styles/registration.css';
 
 
@@ -41,7 +41,17 @@ import '../styles/registration.css';
 
 class Registration extends Component {
     submit = (values) => {
-        console.log(values);
+       delete values['passConfirm'];
+        fetch('http://localhost:4000/api/users/', {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(values) })
+            .then(response => console.log(response))
+            .then( () => store.dispatch(reset('registration')) )
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -58,7 +68,7 @@ class Registration extends Component {
                     </li>
                     <li>
                         <label htmlFor='email'>E-mail address</label>
-                        <Field name='email' component='input' type='text' />
+                        <Field name='email' component='input' type='email' />
                     </li>
                     <li>
                         <label htmlFor='password'>Password</label>
