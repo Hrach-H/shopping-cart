@@ -5,6 +5,8 @@ import Notifications from 'react-notification-system-redux';
 
 import Product from './product'
 
+/* ---------- NOTIFICATION OPTIONS ---------- */
+
 const successNotificationOpts = {
     // uid: 'once-please', // you can specify your own uid if required
     title: 'Load successful',
@@ -27,6 +29,11 @@ const errorNotificationOpts = {
     }
 };
 
+/* ---------- NOTIFICATION OPTIONS END ---------- */
+
+
+/* ---------- INLINE CSS ---------- */
+
 const buttonStyle = {
     float: 'right',
     margin: '10px 10px',
@@ -38,6 +45,8 @@ const buttonStyle = {
     verticalAlign: 'center',
     backgroundColor: 'green'
 };
+
+/* ---------- INLINE CSS END ---------- */
 
 
 class firstPage extends Component {
