@@ -12,7 +12,7 @@ const successNotificationOpts = {
     position: 'tr',
     autoDismiss: 2,
     action: {
-        label: 'Ok',
+        label: 'OK',
     }
 };
 
@@ -23,7 +23,7 @@ const errorNotificationOpts = {
     position: 'tr',
     autoDismiss: 2,
     action: {
-        label: 'Ok',
+        label: 'OK',
     }
 };
 
