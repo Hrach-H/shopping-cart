@@ -1,9 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import {fetchRequest, fetchRequestSuccess} from "../actions";
+import Notifications from 'react-notification-system-redux';
 
 import Product from './product'
+
+const notificationOpts = {
+    // uid: 'once-please', // you can specify your own uid if required
+    title: 'Load successful',
+    message: 'Products have been loaded',
+    position: 'tr',
+    autoDismiss: 2,
+    action: {
+        label: 'Ok',
+    }
+};
+
+const buttonStyle = {
+    float: 'right',
+    margin: '10px 10px',
+    fontWeight: 'bold',
+    color: 'white',
+    textDecoration: 'none',
+    padding: '0.3em',
+    borderRadius: '1em',
+    verticalAlign: 'center',
+    backgroundColor: 'green'
+};
 
 
 class firstPage extends Component {
@@ -17,13 +40,11 @@ class firstPage extends Component {
         this.props.fetchProducts();
     }
 
-    componentWillReceiveProps() {
-        this.props.fetchProducts()
-    }
 
     render() {
         return (
             <div>
+                <button style={buttonStyle} onClick={this.props.fetchProducts}>Update product selection</button>
                 {this.props.products && this.renderItems()}
             </div>
         );
@@ -41,7 +62,10 @@ function fetchProducts() {
         dispatch(fetchRequest());
         return fetch('http://localhost:4000/api/products')
             .then(response => response.json())
-            .then(result => dispatch(fetchRequestSuccess(result)));
+            .then(result => {
+                dispatch(fetchRequestSuccess(result));
+                dispatch(Notifications.success(notificationOpts));
+            });
     }
 }
 

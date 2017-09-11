@@ -14,6 +14,7 @@ import FirstPage from './components/first-page';
 import SecondPage from './components/second-page';
 import Cart from './components/cart'
 import Registration from "./components/registration";
+import SnackNotifications from './components/notifications';
 
 export const store = createStore(allReducers, applyMiddleware(thunk));
 
@@ -21,6 +22,7 @@ class App extends Component {
     render() {
         return (
                 <div>
+                    <SnackNotifications />
                     <h1> Shopping cart test app </h1>
                     <ul>
                         <li>
