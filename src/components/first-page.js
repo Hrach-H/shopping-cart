@@ -5,10 +5,21 @@ import Notifications from 'react-notification-system-redux';
 
 import Product from './product'
 
-const notificationOpts = {
+const successNotificationOpts = {
     // uid: 'once-please', // you can specify your own uid if required
     title: 'Load successful',
     message: 'Products have been loaded',
+    position: 'tr',
+    autoDismiss: 2,
+    action: {
+        label: 'Ok',
+    }
+};
+
+const errorNotificationOpts = {
+    // uid: 'once-please', // you can specify your own uid if required
+    title: 'Connection Error',
+    message: 'No connection to server',
     position: 'tr',
     autoDismiss: 2,
     action: {
@@ -64,8 +75,9 @@ function fetchProducts() {
             .then(response => response.json())
             .then(result => {
                 dispatch(fetchRequestSuccess(result));
-                dispatch(Notifications.success(notificationOpts));
-            });
+                dispatch(Notifications.success(successNotificationOpts));
+            })
+            .catch(() => dispatch(Notifications.error(errorNotificationOpts)))
     }
 }
 
