@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { store } from "../index";
+
 import '../styles/registration.css';
 
 
@@ -49,9 +50,14 @@ class Registration extends Component {
             },
             method: 'POST',
             body: JSON.stringify(values) })
-            .then(response => console.log(response))
-            .then( () => store.dispatch(reset('registration')) )
-            .catch(err => console.log(err));
+            .then(response => response.json())
+            .then( result => {
+                if (result) {
+                    console.warn('INVALID REGISTRATION', result.message);
+                } else {
+                    store.dispatch(reset('registration'))
+                }
+            })
     };
 
     render() {
