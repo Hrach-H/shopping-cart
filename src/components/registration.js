@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { store } from "../index";
+import Notifications from 'react-notification-system-redux';
 
 import '../styles/registration.css';
 
@@ -42,7 +43,6 @@ import '../styles/registration.css';
 
 class Registration extends Component {
     submit = (values) => {
-       delete values['passConfirm'];
         fetch('http://localhost:4000/api/users/', {
             headers: {
             'Accept': 'application/json',
@@ -52,10 +52,20 @@ class Registration extends Component {
             body: JSON.stringify(values) })
             .then(response => response.json())
             .then( result => {
-                if (result) {
+                if (result.message) {
                     console.warn('INVALID REGISTRATION', result.message);
                 } else {
-                    store.dispatch(reset('registration'))
+                    const successOpts = {
+                        title: 'Registration Successful',
+                        message: 'You have been successfully registered. Thank you!',
+                        position: 'tr',
+                        autoDismiss: 3,
+                        action: {
+                            label: 'OK',
+                        }
+                    };
+                    store.dispatch(Notifications.success(successOpts));
+                    store.dispatch(reset('registration'));
                 }
             })
     };
