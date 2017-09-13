@@ -11,6 +11,8 @@ export const validate = values => {
     }
     if (!values.lastName) {
         errors.lastName = 'This field is required';
+    } else if (!/^[a-z ,.'-]+$/i.test(values.lastName)) {
+        errors.lastName = "Please enter a valid name";
     }
 
     // E-mail validation
