@@ -27,3 +27,35 @@ h1 {
 .routes {
     margin: 10px 10px;
 }
+
+.update-button {
+    float: right;
+    margin: 10px 10px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 0.3em;
+    border-radius: 1em;
+    vertical-align: center;
+    background-color: green;
+}
+
+.addToCart {
+    background: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 100%;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.addToCart:hover {
+    background-color: #4CAF50;
+    color: white;
+}

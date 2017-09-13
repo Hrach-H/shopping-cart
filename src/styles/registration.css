@@ -28,7 +28,7 @@ form > * {
     background-color: #555555;
 }
 
-button:first-child {
+.buttons .submit {
     background-color: #4CAF50;
 }
 

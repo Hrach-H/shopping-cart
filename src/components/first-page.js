@@ -32,23 +32,6 @@ const errorNotificationOpts = {
 /* ---------- NOTIFICATION OPTIONS END ---------- */
 
 
-/* ---------- INLINE CSS ---------- */
-
-const buttonStyle = {
-    float: 'right',
-    margin: '10px 10px',
-    fontWeight: 'bold',
-    color: 'white',
-    textDecoration: 'none',
-    padding: '0.3em',
-    borderRadius: '1em',
-    verticalAlign: 'center',
-    backgroundColor: 'green'
-};
-
-/* ---------- INLINE CSS END ---------- */
-
-
 class firstPage extends Component {
     renderItems() {
         return this.props.products.map( (product) => {
@@ -64,7 +47,7 @@ class firstPage extends Component {
     render() {
         return (
             <div>
-                <button style={buttonStyle} onClick={this.props.fetchProducts}>Update product selection</button>
+                <button className='update-button' onClick={this.props.fetchProducts}>Update product selection</button>
                 {this.props.products && this.renderItems()}
             </div>
         );
