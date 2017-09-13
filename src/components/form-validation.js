@@ -1,33 +1,33 @@
 import React from 'react';
 
-'use strtict'
-
 export const validate = values => {
     const errors = {};
 
     // First & last name validation
     if (!values.firstName) {
-        errors.firstName = 'Required';
+        errors.firstName = 'This field is required';
+    } else if (!/^[a-z ,.'-]+$/i.test(values.firstName)) {
+        errors.firstName = "Please enter a valid name";
     }
     if (!values.lastName) {
-        errors.lastName = 'Required';
+        errors.lastName = 'This field is required';
     }
 
     // E-mail validation
     if (!values.email) {
-        errors.email = 'Required';
+        errors.email = 'This field is required';
     } else if (!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+([.])[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/.test(values.email)) {
         errors.email = 'Invalid email address';
     }
 
     // Password validation
     if (!values.password) {
-        errors.password = 'Required';
+        errors.password = 'This field is required';
     } else if (values.password.length < 5) {
         errors.password = 'Password should contain 5 or more characters';
     }
     if (!values.passConfirm) {
-        errors.passConfirm = 'Required';
+        errors.passConfirm = 'This field is required';
     } else if (values.passConfirm !== values.password) {
         errors.passConfirm = "Password confirmation doesn't match the password";
     }
@@ -44,7 +44,7 @@ export const warn = values => {
     return warnings;
 };
 
-export const renderField = ( {input, label, placeholder, type, meta: {touched, error, warning} } ) => {
+export const renderField = ( {input, label, placeholder, type, meta: {touched, error} } ) => {
     return (
         <div>
             <label>
@@ -52,7 +52,7 @@ export const renderField = ( {input, label, placeholder, type, meta: {touched, e
             </label>
             <div>
                 <input {...input} placeholder={placeholder} type={type} />
-                {touched && ( (error && <span>{error}</span>) || (warning && <span>{warning}</span>)) }
+                {touched && ( (error && <span className='error'>{error}</span>)) }
             </div>
         </div>
     );

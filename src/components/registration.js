@@ -81,7 +81,7 @@ class Registration extends Component {
                 <Field name='email' component={renderField} type='email' label='E-mail' placeholder='e.g. johndoe@email.com'/>
                 <Field name='password' component={renderField} type='password' label='Password' placeholder='Must contain 5 characters minimum'/>
                 <Field name='passConfirm' component={renderField} type='password' label='Password confirmation'/>
-                <div>
+                <div className="buttons">
                     <button type="submit" disabled={this.props.submitting}>Submit</button>
                     <button type='button' disabled={this.props.pristine || this.props.submitting } onClick={this.props.reset}>Clear values</button>
                 </div>

@@ -7,3 +7,47 @@
 input {
     display: block;
 }
+
+form > * {
+    margin: 5px 0;
+}
+
+.buttons > * {
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #008CBA;
+}
+
+.buttons > *:disabled {
+    background-color: #555555;
+}
+
+button:first-child {
+    background-color: #4CAF50;
+}
+
+.error {
+    background: #FF4C4C;
+    color: white;
+    padding: 5px;
+    border-radius: 0;
+    position: relative;
+    display: inline-block;
+    box-shadow: 1px 1px 1px #aaaaaa;
+    margin-top: 10px;
+}
+
+.error:before{
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FF4C4C;
+    position: absolute;
+    top: -10px;
+}
