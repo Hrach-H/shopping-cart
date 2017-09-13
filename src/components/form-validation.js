@@ -54,7 +54,7 @@ export const renderField = ( {input, label, placeholder, type, meta: {touched, e
             </label>
             <div>
                 <input {...input} placeholder={placeholder} type={type} />
-                {touched && ( (error && <span className='error'>{error}</span>)) }
+                {touched && (error && <span className='error'>{error}</span>) }
             </div>
         </div>
     );
