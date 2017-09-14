@@ -63,7 +63,7 @@ export const renderField = ( {input, label, options, placeholder, type, meta: {t
 
             {(type === 'select') &&
             (<select {...input}>
-                <option key='0' />
+                <option key='0'>{placeholder}</option>
                 {options.map((optionVal, index) => <option key={index+1} value={optionVal}> {optionVal} </option>)}
             </select>)
             }

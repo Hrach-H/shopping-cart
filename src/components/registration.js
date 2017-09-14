@@ -100,9 +100,9 @@ class Registration extends Component {
                 <Field name='email' component={renderField} type='email' label='E-mail' placeholder='e.g. johndoe@email.com'/>
                 <Field name='password' component={renderField} type='password' label='Password' placeholder='Must contain 5 characters minimum'/>
                 <Field name='passConfirm' component={renderField} type='password' label='Password confirmation'/>
-                <Field name='year' component={renderField} type='select' label='Date of birth' options={calculateYears()}/>
-                <Field name='month' component={renderField} type='select' options={months}/>
-                <Field name='day' component={renderField} type='select' options={calculateDays()}/>
+                <Field name='year' placeholder='YYYY' component={renderField} type='select' label='Date of birth' options={calculateYears()}/>
+                <Field name='month' placeholder='MM' component={renderField} type='select' options={months}/>
+                <Field name='day'  placeholder='DD' component={renderField} type='select' options={calculateDays()}/>
                 <div className="buttons">
                     <button className='submit' type="submit" disabled={this.props.submitting}>Submit</button>
                     <button type='button' disabled={this.props.pristine || this.props.submitting } onClick={this.props.reset}>Clear values</button>
