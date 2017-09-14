@@ -5,6 +5,7 @@
 }
 
 input {
+    display: block;
     min-width: 225px;
     min-height: 20px;
 }

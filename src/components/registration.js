@@ -44,16 +44,25 @@ import '../styles/registration.css';
 //         </form>
 //     );
 // };
+const months = moment.monthsShort();
+const convertMonthToNumber = month => {
+    return months.join('').indexOf(month) / 3 + 1;
+};
 
 class Registration extends Component {
     submit = (values) => {
+        let regBody = {...values};
+        regBody.birthDate = `${regBody.year}-${convertMonthToNumber(regBody.month)}-${regBody.day}`;
+        delete regBody.year;
+        delete regBody.month;
+        delete regBody.day;
         fetch('http://localhost:4000/api/users/', {
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
             method: 'POST',
-            body: JSON.stringify(values) })
+            body: JSON.stringify(regBody) })
             .then(response => response.json())
             .then( result => {
                 if (result.message) {
@@ -72,22 +81,21 @@ class Registration extends Component {
                     store.dispatch(reset('registration'));
                     this.props.history.push('/firstPage');
                 }
-            })
+            }).catch(err => console.log(err))
     };
 
     render() {
-        // Calculation of available years, months & days
-        const months = moment.monthsShort();
+        // Calculation of available years & days (not outside render function, because needs chosen year & month for proper calculations
         const calculateYears = () => {
             const minAge = 18,
                 startYear = (new Date()).getFullYear() - 100,
                 endYear = (new Date()).getFullYear() - minAge;
             let output = [];
             for (let year = startYear; year <= endYear; year++) output.push(year);
-            return output;
+            return output.reverse();
         };
         const calculateDays = () => {
-            const days = moment('' + this.props.year + '-' + +(months.join('').indexOf(this.props.month) / 3+1) + '', 'YYYY-MM').daysInMonth();
+            const days = moment(`${this.props.year}-${convertMonthToNumber(this.props.month)}`, 'YYYY-MM').daysInMonth();
             let output = [];
             for (let day = 1; day <= days; day++) output.push(day);
             return output;
