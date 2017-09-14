@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Notifications from 'react-notification-system-redux';
 
 import { store } from "../index";
 import {resetCart} from "../actions";
@@ -30,8 +31,19 @@ class secondPage extends Component {
             },
             method: 'PATCH', body: JSON.stringify(newObj)})
             .then(response => {
+                const successOpts = {
+                    title: 'Order successful',
+                    message: 'Thanks for ordering! :)',
+                    position: 'tr',
+                    autoDismiss: 2,
+                    action: {
+                        label: 'OK',
+                    }
+                };
                 console.log(response);
                 store.dispatch(resetCart());
+                this.props.history.push('/firstPage');
+                store.dispatch(Notifications.success(successOpts));
             })
             .catch(error => console.log(error));
     };
