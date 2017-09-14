@@ -76,6 +76,7 @@ class Registration extends Component {
     };
 
     render() {
+        // Calculation of available years, months & days
         const months = moment.monthsShort();
         const calculateYears = () => {
             const minAge = 18,
@@ -119,12 +120,15 @@ Registration = reduxForm({
     warn
 })(Registration);
 
+// Connecting form values for proper calculation of available 'Date of Birth' values
 const selector = formValueSelector('registration');
 
 Registration = connect(state => ({
     year: selector(state, 'year'),
     month: selector(state, 'month')
 }))(Registration);
+
+// ----------------------------------------------------------------------------------
 
 Registration = withRouter(Registration);
 
