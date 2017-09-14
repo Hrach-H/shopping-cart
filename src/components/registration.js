@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm, reset, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux';
 import { store } from "../index";
 import { renderField, validate, warn } from "./form-validation";
 import { withRouter } from 'react-router-dom';
 import Notifications from 'react-notification-system-redux';
+import moment from 'moment';
 
 import '../styles/registration.css';
 
@@ -74,6 +76,22 @@ class Registration extends Component {
     };
 
     render() {
+        const months = moment.monthsShort();
+        const calculateYears = () => {
+            const minAge = 18,
+                startYear = (new Date()).getFullYear() - 100,
+                endYear = (new Date()).getFullYear() - minAge;
+            let output = [];
+            for (let year = startYear; year <= endYear; year++) output.push(year);
+            return output;
+        };
+        const calculateDays = () => {
+            const days = moment('' + this.props.year + '-' + +(months.join('').indexOf(this.props.month) / 3+1) + '', 'YYYY-MM').daysInMonth();
+            let output = [];
+            for (let day = 1; day <= days; day++) output.push(day);
+            return output;
+        };
+
         return (
             <form onSubmit={this.props.handleSubmit(this.submit)}>
                 <Field name='firstName' component={renderField} type='text' label='First Name' placeholder='John'/>
@@ -81,6 +99,9 @@ class Registration extends Component {
                 <Field name='email' component={renderField} type='email' label='E-mail' placeholder='e.g. johndoe@email.com'/>
                 <Field name='password' component={renderField} type='password' label='Password' placeholder='Must contain 5 characters minimum'/>
                 <Field name='passConfirm' component={renderField} type='password' label='Password confirmation'/>
+                <Field name='year' component={renderField} type='select' label='Date of birth' options={calculateYears()}/>
+                <Field name='month' component={renderField} type='select' options={months}/>
+                <Field name='day' component={renderField} type='select' options={calculateDays()}/>
                 <div className="buttons">
                     <button className='submit' type="submit" disabled={this.props.submitting}>Submit</button>
                     <button type='button' disabled={this.props.pristine || this.props.submitting } onClick={this.props.reset}>Clear values</button>
@@ -97,6 +118,13 @@ Registration = reduxForm({
     validate,
     warn
 })(Registration);
+
+const selector = formValueSelector('registration');
+
+Registration = connect(state => ({
+    year: selector(state, 'year'),
+    month: selector(state, 'month')
+}))(Registration);
 
 Registration = withRouter(Registration);
 

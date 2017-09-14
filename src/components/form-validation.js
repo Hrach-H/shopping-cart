@@ -46,16 +46,25 @@ export const warn = values => {
     return warnings;
 };
 
-export const renderField = ( {input, label, placeholder, type, meta: {touched, error} } ) => {
+export const renderField = ( {input, label, options, placeholder, type, meta: {touched, error} } ) => {
     return (
         <div>
             <label>
                 {label}
             </label>
-            <div>
+
+            {(type !== 'select') &&
+            (<div>
                 <input {...input} placeholder={placeholder} type={type} />
                 {touched && (error && <span className='error'>{error}</span>) }
-            </div>
+            </div>)}
+
+            {(type === 'select') &&
+            (<select {...input}>
+                <option key='0' />
+                {options.map((optionVal, index) => <option key={index+1} value={optionVal}> {optionVal} </option>)}
+            </select>)
+            }
         </div>
     );
 };
