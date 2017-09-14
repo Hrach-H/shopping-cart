@@ -1,5 +1,7 @@
 import React from 'react';
 
+// @TODO add birth date validation!
+
 export const validate = values => {
     const errors = {};
 
