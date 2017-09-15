@@ -130,9 +130,9 @@ class Registration extends Component {
 
                 <div className='select'>
                     <label>Date of birth</label>
-                    <Field name='year' placeholder='YYYY' component={renderField} type='select' label='Date of birth' options={calculateYears()}/>
-                    <Field name='month' placeholder='MM' component={renderField} type='select' options={months}/>
-                    <Field name='day'  placeholder='DD' component={renderField} type='select' options={calculateDays()}/>
+                    <Field name='year' placeholder='year' component={renderField} type='select' label='Date of birth' options={calculateYears()}/>
+                    <Field name='month' placeholder='month' component={renderField} type='select' options={months}/>
+                    <Field name='day'  placeholder='day' component={renderField} type='select' options={calculateDays()}/>
                 </div>
                 <div className="buttons">
                     <button className='submit' type="submit" disabled={this.props.submitting}>Submit</button>
