@@ -24,6 +24,17 @@ export const validate = values => {
         errors.email = 'Invalid email address';
     }
 
+    // Date of birth validation
+    if ( !values.year && typeof values.year !== 'number') {
+        errors.year = 'This field is required';
+    }
+    if (!values.month ) {
+        errors.month = 'This field is required';
+    }
+    if (!values.day && typeof values.year !== 'number') {
+        errors.day = 'This field is required';
+    }
+
     // Password validation
     if (!values.password) {
         errors.password = 'This field is required';
@@ -36,6 +47,7 @@ export const validate = values => {
         errors.passConfirm = "Password confirmation doesn't match the password";
     }
 
+    console.log(errors);
     return errors;
 };
 
@@ -62,11 +74,13 @@ export const renderField = ( {input, label, options, placeholder, type, meta: {t
             </div>)}
 
             {(type === 'select') &&
-            (<select {...input}>
-                <option key='0'>{placeholder}</option>
-                {options.map((optionVal, index) => <option key={index+1} value={optionVal}> {optionVal} </option>)}
-            </select>)
-            }
+            (<div>
+                <select {...input}>
+                    <option key='0'>{placeholder}</option>
+                    {options.map((optionVal, index) => <option key={index+1} value={optionVal}> {optionVal} </option>)}
+                </select>
+                {touched && (error && <span className='error'>{error}</span>) }
+            </div>)}
         </div>
     );
 };

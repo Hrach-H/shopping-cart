@@ -52,7 +52,7 @@ const convertMonthToNumber = month => {
 class Registration extends Component {
     submit = (values) => {
         let regBody = {...values};
-        regBody.birthDate = `${regBody.year}-${convertMonthToNumber(regBody.month)}-${regBody.day}`;
+        regBody.birthDate = `${regBody.year}-${convertMonthToNumber(regBody.month) < 10 ? '0' + convertMonthToNumber(regBody.month) : convertMonthToNumber(regBody.month)}-${regBody.day < 10 ? '0'+regBody.day : regBody.day}`;
         delete regBody.year;
         delete regBody.month;
         delete regBody.day;
