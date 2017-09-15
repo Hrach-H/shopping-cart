@@ -14,6 +14,6 @@ class SnackNotifications extends Component {
 
 }
 
-SnackNotifications = connect(state => ({notifications: state.notifications}))(SnackNotifications);
+SnackNotifications = connect( state => ({notifications: state.notifications}) )(SnackNotifications);
 
 export default SnackNotifications;

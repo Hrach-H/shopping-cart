@@ -28,7 +28,7 @@ class Product extends Component {
                 <li> Available quantity: {this.props.availableQuantity - ((this.props.cart[this.props._id] && this.props.cart[this.props._id].quantity) || 0)} </li>
                 <li> Description: {this.props.description} </li>
                 <li>
-                    <button className='addToCart'onClick={this.addToCart}> Add to cart </button>
+                    <button className='addToCart' onClick={this.addToCart}> Add to cart </button>
                 </li>
             </ul>);}
 }
