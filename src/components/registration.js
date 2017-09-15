@@ -103,14 +103,27 @@ class Registration extends Component {
 
         return (
             <form onSubmit={this.props.handleSubmit(this.submit)}>
-                <Field name='firstName' component={renderField} type='text' label='First Name' placeholder='John'/>
+                <label htmlFor='firstName'>First Name</label>
+                <Field name='firstName' component={renderField} type='text' placeholder='John'/>
+
+                <label htmlFor='lastName'>Last Name</label>
                 <Field name='lastName' component={renderField} type='text' label='Last Name' placeholder='Doe'/>
+
+                <label htmlFor='email'>E-mail</label>
                 <Field name='email' component={renderField} type='email' label='E-mail' placeholder='e.g. johndoe@email.com'/>
+
+                <label htmlFor='password'>Password</label>
                 <Field name='password' component={renderField} type='password' label='Password' placeholder='Must contain 5 characters minimum'/>
+
+                <label htmlFor='passConfirm'>Password confirmation</label>
                 <Field name='passConfirm' component={renderField} type='password' label='Password confirmation'/>
-                <Field name='year' placeholder='YYYY' component={renderField} type='select' label='Date of birth' options={calculateYears()}/>
-                <Field name='month' placeholder='MM' component={renderField} type='select' options={months}/>
-                <Field name='day'  placeholder='DD' component={renderField} type='select' options={calculateDays()}/>
+
+                <div className='select'>
+                    <label>Date of birth</label>
+                    <Field name='year' placeholder='YYYY' component={renderField} type='select' label='Date of birth' options={calculateYears()}/>
+                    <Field name='month' placeholder='MM' component={renderField} type='select' options={months}/>
+                    <Field name='day'  placeholder='DD' component={renderField} type='select' options={calculateDays()}/>
+                </div>
                 <div className="buttons">
                     <button className='submit' type="submit" disabled={this.props.submitting}>Submit</button>
                     <button type='button' disabled={this.props.pristine || this.props.submitting } onClick={this.props.reset}>Clear values</button>

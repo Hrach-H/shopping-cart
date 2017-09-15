@@ -47,7 +47,6 @@ export const validate = values => {
         errors.passConfirm = "Password confirmation doesn't match the password";
     }
 
-    console.log(errors);
     return errors;
 };
 
@@ -63,23 +62,19 @@ export const warn = values => {
 export const renderField = ( {input, label, options, placeholder, type, meta: {touched, error} } ) => {
     return (
         <div>
-            <label>
-                {label}
-            </label>
 
-            {(type !== 'select') &&
+            {(type !== 'select') ?
+
             (<div>
                 <input {...input} placeholder={placeholder} type={type} />
                 {touched && (error && <span className='error'>{error}</span>) }
-            </div>)}
-
-            {(type === 'select') &&
+            </div>)
+                :
             (<div>
-                <select {...input}>
+                <select {...input} className={touched && error && 'option-error'}>
                     <option key='0'>{placeholder}</option>
                     {options.map((optionVal, index) => <option key={index+1} value={optionVal}> {optionVal} </option>)}
                 </select>
-                {touched && (error && <span className='error'>{error}</span>) }
             </div>)}
         </div>
     );
