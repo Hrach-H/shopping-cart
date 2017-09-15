@@ -45,9 +45,7 @@ import '../styles/registration.css';
 //     );
 // };
 const months = moment.monthsShort();
-const convertMonthToNumber = month => {
-    return months.join('').indexOf(month) / 3 + 1;
-};
+const convertMonthToNumber = month => months.join('').indexOf(month) / 3 + 1;
 
 class Registration extends Component {
     submit = (values) => {
@@ -134,10 +132,12 @@ class Registration extends Component {
                     <Field name='month' placeholder='month' component={renderField} type='select' options={months}/>
                     <Field name='day'  placeholder='day' component={renderField} type='select' options={calculateDays()}/>
                 </div>
+
                 <div className="buttons">
                     <button className='submit' type="submit" disabled={this.props.submitting}>Submit</button>
                     <button type='button' disabled={this.props.pristine || this.props.submitting } onClick={this.props.reset}>Clear values</button>
                 </div>
+
             </form>
         );
     }
