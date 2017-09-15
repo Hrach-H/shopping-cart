@@ -67,6 +67,16 @@ class Registration extends Component {
             .then( result => {
                 if (result.message) {
                     console.warn('INVALID REGISTRATION', result.message);
+                    const errOpts = {
+                        title: 'Registration Failed',
+                        message: result.message.substring((result.message.indexOf(':')+1)),
+                        position: 'tr',
+                        autoDismiss: 0,
+                        action: {
+                            label: 'OK',
+                        }
+                    };
+                    store.dispatch(Notifications.warning(errOpts));
                 } else {
                     const successOpts = {
                         title: 'Registration Successful',
