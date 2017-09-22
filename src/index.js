@@ -22,11 +22,18 @@ export const store = createStore(allReducers, applyMiddleware(thunk));
 class App extends Component {
     handleLogout = () => {
         fetch('/api/logout', {credentials: 'include'})
-            .then(response => response.json())
+            .then(response => {
+                if (response.status < 400) {
+                    return response.json();
+                } else {
+                    throw new Error("You are not logged in");
+                }
+            })
             .then(result => {
                 console.log(result);
                 (this.props.history.location.pathname !== '/') && this.props.history.push('/')
-            });
+            })
+            .catch(err => console.warn(err));
     };
 
     render() {
