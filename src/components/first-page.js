@@ -63,7 +63,7 @@ function mapStateToProps(state) {
 function fetchProducts() {
     return (dispatch) => {
         dispatch(fetchRequest());
-        return fetch('http://localhost:4000/api/products')
+        return fetch('/api/products', {credentials: 'include'})
             .then(response => response.json())
             .then(result => {
                 dispatch(fetchRequestSuccess(result));

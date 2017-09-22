@@ -54,7 +54,7 @@ class Registration extends Component {
         delete regBody.year;
         delete regBody.month;
         delete regBody.day;
-        fetch('http://localhost:4000/api/users/', {
+        fetch('/api/users/', {
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

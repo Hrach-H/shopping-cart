@@ -25,6 +25,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "main": "index.js",
   "repository": "https://github.com/Hrach-H/shopping-cart.git",
   "author": "hrachya.hovsepyan <hrachya.hovsepyan@betconstruct.com>",

@@ -8,12 +8,13 @@ import '../styles/registration.css';
 
 class Login extends Component {
     submit = (values) => {
-        fetch('http://localhost:4000/api/login/', {
+        fetch('/api/login/', {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify(values)})
             .then(response => response.json())
             .then(result => console.log(result));
