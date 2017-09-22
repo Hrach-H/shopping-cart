@@ -14,6 +14,11 @@ export const fetchRequestSuccess = products => ({
     payload: products
 });
 
+export const storeUser = user => ({
+    type: 'LOGIN',
+    payload: user
+});
+
 export const resetCart = () => ({
     type: 'RESET_CART'
 });

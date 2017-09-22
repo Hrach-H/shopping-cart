@@ -14,6 +14,7 @@ import FirstPage from './components/first-page';
 import SecondPage from './components/second-page';
 import Cart from './components/cart'
 import Registration from "./components/registration";
+import Login from './components/login';
 import SnackNotifications from './components/notifications';
 
 export const store = createStore(allReducers, applyMiddleware(thunk));
@@ -30,6 +31,7 @@ class App extends Component {
                                 <Link to='/'> HOMEPAGE </Link>
                                 <Link to='/firstPage'> OUR PRODUCTS </Link>
                                 <Link to='/registration'>REGISTRATION </Link>
+                                <Link to='/login'>LOGIN</Link>
                             </div>
                         </li>
                         <li>
@@ -42,6 +44,7 @@ class App extends Component {
                         <Route path="/firstPage" component={FirstPage} />
                         <Route path="/secondPage" component={SecondPage} />
                         <Route path="/registration" component={Registration} />
+                        <Route path="/login" component={Login} />
                     </div>
                 </div>
         );
