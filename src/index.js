@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, withRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -20,6 +20,15 @@ import SnackNotifications from './components/notifications';
 export const store = createStore(allReducers, applyMiddleware(thunk));
 
 class App extends Component {
+    handleLogout = () => {
+        fetch('/api/logout', {credentials: 'include'})
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                (this.props.history.location.pathname !== '/') && this.props.history.push('/')
+            });
+    };
+
     render() {
         return (
                 <div>
@@ -32,6 +41,7 @@ class App extends Component {
                                 <Link to='/firstPage'> OUR PRODUCTS </Link>
                                 <Link to='/registration'>REGISTRATION </Link>
                                 <Link to='/login'>LOGIN</Link>
+                                <button onClick={this.handleLogout}>LOGOUT</button>
                             </div>
                         </li>
                         <li>
@@ -50,6 +60,8 @@ class App extends Component {
         );
     }
 }
+
+App = withRouter(App);
 
 ReactDOM.render(
     <Provider store={store}>
