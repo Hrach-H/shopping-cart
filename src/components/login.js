@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { withRouter } from 'react-router-dom';
 import { renderField, validate, warn } from './form-validation';
+import { store } from "../index";
+import { storeUser } from "../actions";
 
 
 import '../styles/registration.css';
@@ -17,7 +20,11 @@ class Login extends Component {
             credentials: 'include',
             body: JSON.stringify(values)})
             .then(response => response.json())
-            .then(result => console.log(result));
+            .then(result => {
+                console.log(result);
+                store.dispatch(storeUser(result));
+                this.props.history.push('/firstPage');
+            })
     };
 
     render() {
@@ -43,5 +50,7 @@ Login = reduxForm({
     validate,
     warn
 })(Login);
+
+Login = withRouter(Login);
 
 export default Login;

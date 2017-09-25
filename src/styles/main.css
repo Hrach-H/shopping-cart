@@ -8,6 +8,10 @@ h1 {
     margin-bottom: 10px;
 }
 
+a {
+    cursor: pointer;
+}
+
 .nav > *{
     margin: 10px 10px;
     font-weight: bold;

@@ -33,6 +33,7 @@ class App extends Component {
             })
             .then(result => {
                 console.log(result);
+                store.dispatch(storeUser({isLoggedIn: false}));
                 (this.props.history.location.pathname !== '/') && this.props.history.push('/');
             })
             .catch(err => console.warn(err));
@@ -63,8 +64,7 @@ class App extends Component {
                                 <Link to='/'> HOMEPAGE </Link>
                                 <Link to='/firstPage'> OUR PRODUCTS </Link>
                                 <Link to='/registration'>REGISTRATION </Link>
-                                <Link to='/login'>LOGIN</Link>
-                                <button onClick={this.handleLogout}>LOGOUT</button>
+                                {this.props.user.isLoggedIn ? <a onClick={this.handleLogout}>LOGOUT</a> : <Link to='/login'>LOGIN</Link>}
                             </div>
                         </li>
                         <li>
@@ -84,8 +84,8 @@ class App extends Component {
     }
 }
 
-App = connect( (state) => ({user: state.userReducer}))(App);
-App = withRouter(App);
+//App = connect( (state) => ({user: state.userReducer}))(App);
+App = withRouter(connect( (state) => ({user: state.userReducer}))(App));
 
 ReactDOM.render(
     <Provider store={store}>
