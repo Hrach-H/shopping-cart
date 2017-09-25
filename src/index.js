@@ -63,7 +63,7 @@ class App extends Component {
                             <div className="nav">
                                 <Link to='/'> HOMEPAGE </Link>
                                 <Link to='/firstPage'> OUR PRODUCTS </Link>
-                                <Link to='/registration'>REGISTRATION </Link>
+                                {!this.props.user.isLoggedIn && <Link to='/registration'>REGISTRATION </Link>}
                                 {this.props.user.isLoggedIn ? <a onClick={this.handleLogout}>LOGOUT</a> : <Link to='/login'>LOGIN</Link>}
                             </div>
                         </li>

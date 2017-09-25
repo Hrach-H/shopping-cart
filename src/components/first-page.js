@@ -18,16 +18,16 @@ const successNotificationOpts = {
     }
 };
 
-const errorNotificationOpts = {
+const errorNotificationOpts = msg => ({
     // uid: 'once-please', // you can specify your own uid if required
-    title: 'Connection Error',
-    message: 'No connection to server',
+    title: 'Error',
+    message: msg,
     position: 'tr',
     autoDismiss: 2,
     action: {
         label: 'OK',
     }
-};
+});
 
 /* ---------- NOTIFICATION OPTIONS END ---------- */
 
@@ -66,10 +66,14 @@ function fetchProducts() {
         return fetch('/api/products', {credentials: 'include'})
             .then(response => response.json())
             .then(result => {
-                dispatch(fetchRequestSuccess(result));
-                dispatch(Notifications.success(successNotificationOpts));
+                if (result.message) {
+                    dispatch(Notifications.error(errorNotificationOpts(result.message)));
+                } else {
+                    dispatch(fetchRequestSuccess(result));
+                    dispatch(Notifications.success(successNotificationOpts));
+                }
             })
-            .catch(() => dispatch(Notifications.error(errorNotificationOpts)))
+            .catch(err => console.log(err))
     }
 }
 
