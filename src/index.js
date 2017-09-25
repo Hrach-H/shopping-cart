@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Link, Route, withRouter } from 'react-router-d
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import { storeUser } from "./actions";
+import { connect } from 'react-redux';
 
 import './styles/main.css'
 
@@ -31,10 +33,24 @@ class App extends Component {
             })
             .then(result => {
                 console.log(result);
-                (this.props.history.location.pathname !== '/') && this.props.history.push('/')
+                (this.props.history.location.pathname !== '/') && this.props.history.push('/');
             })
             .catch(err => console.warn(err));
     };
+
+    componentWillMount() {
+        fetch('/api', {credentials: 'include'})
+            .then(response => {
+                if (response.status !== 401) {
+                    return response.json();
+                } else {
+                    throw new Error('User not authorized');
+                }
+            })
+            .then(user => store.dispatch(storeUser(user)))
+            .catch(err => console.warn(err));
+    }
+
 
     render() {
         return (
@@ -68,6 +84,7 @@ class App extends Component {
     }
 }
 
+App = connect( (state) => ({user: state.userReducer}))(App);
 App = withRouter(App);
 
 ReactDOM.render(
