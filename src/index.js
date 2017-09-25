@@ -17,6 +17,7 @@ import SecondPage from './components/second-page';
 import Cart from './components/cart'
 import Registration from "./components/registration";
 import Login from './components/login';
+import UserProfile from './components/user';
 import SnackNotifications from './components/notifications';
 
 export const store = createStore(allReducers, applyMiddleware(thunk));
@@ -69,6 +70,9 @@ class App extends Component {
                         </li>
                         <li>
                             <Cart />
+                        </li>
+                        <li>
+                            <UserProfile />
                         </li>
                     </ul>
                     <hr />
