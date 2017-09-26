@@ -9,6 +9,8 @@ import moment from 'moment';
 
 import '../styles/registration.css';
 
+import { User } from "../constructors/user";
+
 
 // let Registration = props => {
 //     const submit = (values) => {
@@ -45,22 +47,18 @@ import '../styles/registration.css';
 //     );
 // };
 const months = moment.monthsShort();
-const convertMonthToNumber = month => months.join('').indexOf(month) / 3 + 1;
+export const convertMonthToNumber = month => months.join('').indexOf(month) / 3 + 1;
 
 class Registration extends Component {
     submit = (values) => {
-        let regBody = {...values};
-        regBody.birthDate = `${regBody.year}-${convertMonthToNumber(regBody.month) < 10 ? '0' + convertMonthToNumber(regBody.month) : convertMonthToNumber(regBody.month)}-${regBody.day < 10 ? '0'+regBody.day : regBody.day}`;
-        delete regBody.year;
-        delete regBody.month;
-        delete regBody.day;
+        let user = new User(values);
         fetch('/api/users/', {
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
             },
             method: 'POST',
-            body: JSON.stringify(regBody) })
+            body: JSON.stringify(user) })
             .then(response => response.json())
             .then( result => {
                 if (result.message) {
