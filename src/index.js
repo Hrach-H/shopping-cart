@@ -11,7 +11,7 @@ import './styles/main.css'
 
 import { allReducers } from "./reducers/index";
 
-import Homepage from './components/homepage'
+import { Homepage } from './components/homepage'
 import FirstPage from './components/first-page';
 import SecondPage from './components/second-page';
 import Cart from './components/cart'
