@@ -29,6 +29,7 @@ class secondPage extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             method: 'PATCH', body: JSON.stringify(newObj)})
             .then(response => {
                 const successOpts = {

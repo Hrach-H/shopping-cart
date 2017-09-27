@@ -69,7 +69,7 @@ export const renderField = ( {input, label, options, placeholder, type, meta: {t
             </div>)
                 :
             (<div>
-                <select {...input} className={touched && error && 'option-error'}>
+                <select {...input} className={touched && error ? 'option-error' : ''}>
                     <option key='0' value ='' disabled defaultValue hidden>{placeholder}</option>
                     {options.map((optionVal, index) => <option key={index+1} value={optionVal}> {optionVal} </option>)}
                 </select>
