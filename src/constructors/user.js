@@ -7,7 +7,7 @@ export class User {
         this.email = user.email;
         this.password = user.password;
         this.passConfirm = user.passConfirm;
-        this.birthdate = `${user.year}-${convertMonthToNumber(user.month) < 10 ? '0' + convertMonthToNumber(user.month) : convertMonthToNumber(user.month)}-${user.day < 10 ? '0'+user.day : user.day}`;
+        this.birthDate = `${user.year}-${convertMonthToNumber(user.month) < 10 ? '0' + convertMonthToNumber(user.month) : convertMonthToNumber(user.month)}-${user.day < 10 ? '0'+user.day : user.day}`;
     }
 
 }
