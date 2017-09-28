@@ -59,7 +59,7 @@ class Registration extends Component {
             },
             method: 'POST',
             body: JSON.stringify(user) })
-            .then(response => response.json())
+            .then( response => response.json())
             .then( result => {
                 if (result.message) {
                     console.warn('INVALID REGISTRATION', result.message);
@@ -87,7 +87,8 @@ class Registration extends Component {
                     store.dispatch(reset('registration'));
                     this.props.history.push('/firstPage');
                 }
-            }).catch(err => console.log(err))
+            }).catch(err => console.log(err));
+        user = null;
     };
 
     render() {
