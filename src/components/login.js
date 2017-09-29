@@ -8,23 +8,26 @@ import { storeUser } from "../actions";
 
 import '../styles/registration.css';
 
+export const login = (values, props) => {
+    fetch('/api/login/', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(values)})
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            store.dispatch(storeUser(result));
+            (props !== undefined) && props.history.push('/firstPage');
+        })
+};
 
 class Login extends Component {
     submit = (values) => {
-        fetch('/api/login/', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            credentials: 'include',
-            body: JSON.stringify(values)})
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                store.dispatch(storeUser(result));
-                this.props.history.push('/firstPage');
-            })
+        login(values, this.props);
     };
 
     render() {

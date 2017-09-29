@@ -10,6 +10,7 @@ import moment from 'moment';
 import '../styles/registration.css';
 
 import { User } from "../constructors/user";
+import { login } from "./login";
 
 
 // let Registration = props => {
@@ -85,7 +86,7 @@ class Registration extends Component {
                     };
                     store.dispatch(Notifications.success(successOpts));
                     store.dispatch(reset('registration'));
-                    this.props.history.push('/firstPage');
+                    login(values, this.props);
                 }
             }).catch(err => console.log(err));
         user = null;

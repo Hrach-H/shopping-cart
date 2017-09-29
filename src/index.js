@@ -35,7 +35,7 @@ class App extends Component {
             .then(result => {
                 console.log(result);
                 store.dispatch(storeUser({isLoggedIn: false}));
-                (this.props.history.location.pathname !== '/') && this.props.history.push('/');
+                this.props.history.push('/');
             })
             .catch(err => console.warn(err));
     };
